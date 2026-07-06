@@ -2,19 +2,13 @@ services:
   - type: web
     name: competitor-watch
     env: node
-    plan: starter
+    plan: free
     buildCommand: npm install --prefix backend && npm install --prefix frontend && npm run build --prefix frontend
     startCommand: npm start --prefix backend
     healthCheckPath: /api/health
-    disk:
-      name: competitor-watch-data
-      mountPath: /var/data
-      sizeGB: 1
     envVars:
       - key: NODE_ENV
         value: production
-      - key: DB_PATH
-        value: /var/data/amazon_price_tracker.db
       - key: PUBLIC_TUNNEL
         value: off
       - key: PRICE_CHECK_CRON

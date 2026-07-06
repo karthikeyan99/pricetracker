@@ -14,15 +14,27 @@ your PC being switched on.
 
 ## Recommended first deployment
 
-Use a small always-on web service with a persistent disk.
+The included `render.yaml` uses Render's free web service mode so you can test
+without adding payment details.
 
-The included `render.yaml` is designed for this:
+It is designed to:
 
 - build frontend
 - start backend
 - serve the dashboard and API from one URL
-- keep the database at `/var/data/amazon_price_tracker.db`
 - run the existing price-check scheduler in the cloud
+
+## Free hosting limitation
+
+Render free web services can sleep when idle and their local filesystem is not
+persistent. That means the default local SQLite file is fine for testing, but it
+is not the right permanent database for serious tracking.
+
+For a reliable no-PC setup, use one of these:
+
+- Paid Render service with persistent disk for the current SQLite app.
+- Free/low-cost hosted Postgres or Supabase, then update the backend to store
+  products and price history there.
 
 ## Required private settings
 
@@ -40,7 +52,6 @@ EMAIL_FROM=Competitor Watch <your_email@gmail.com>
 MY_STORE=YourStoreName
 PRIMARY_COMPETITOR=MainCompetitorName
 PUBLIC_TUNNEL=off
-DB_PATH=/var/data/amazon_price_tracker.db
 ```
 
 Telegram is recommended for fast alerts:
@@ -72,4 +83,3 @@ scraping method can change behind the scenes.
 4. Confirm alerts work.
 5. Add the full product list.
 6. Only then decide whether to stop the local PC tracker.
-
