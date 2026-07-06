@@ -3,7 +3,7 @@ services:
     name: competitor-watch
     env: node
     plan: free
-    buildCommand: npm ci --prefix backend --omit=dev && npm ci --prefix frontend --include=dev && npm run build --prefix frontend
+    buildCommand: npm ci --prefix backend --omit=dev
     startCommand: npm start --prefix backend
     healthCheckPath: /api/health
     envVars:

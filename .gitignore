@@ -18,8 +18,9 @@ backend/tracker.log
 backend/public-url.txt
 
 # Build output
-frontend/dist/
 dist/
+!frontend/dist/
+!frontend/dist/**
 
 # Logs
 *.log

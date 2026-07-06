@@ -1,0 +1,17 @@
+{
+  "name": "Competitor Watch — Flipkart Price Tracker",
+  "short_name": "CompetitorWatch",
+  "description": "Track FinyPetz and other rival sellers: prices, stock, buy box, and margins.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f3f4f6",
+  "theme_color": "#1e293b",
+  "icons": [
+    {
+      "src": "/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
