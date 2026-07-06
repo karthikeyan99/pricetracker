@@ -1,0 +1,53 @@
+services:
+  - type: web
+    name: competitor-watch
+    env: node
+    plan: starter
+    buildCommand: npm install --prefix backend && npm install --prefix frontend && npm run build --prefix frontend
+    startCommand: npm start --prefix backend
+    healthCheckPath: /api/health
+    disk:
+      name: competitor-watch-data
+      mountPath: /var/data
+      sizeGB: 1
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: DB_PATH
+        value: /var/data/amazon_price_tracker.db
+      - key: PUBLIC_TUNNEL
+        value: off
+      - key: PRICE_CHECK_CRON
+        value: "*/30 * * * *"
+      - key: DIGEST_OPENING_CRON
+        value: "0 9 * * *"
+      - key: DIGEST_CLOSING_CRON
+        value: "0 21 * * *"
+      - key: APP_USER
+        sync: false
+      - key: APP_PASS
+        sync: false
+      - key: ALERT_EMAIL
+        sync: false
+      - key: EMAIL_HOST
+        sync: false
+      - key: EMAIL_PORT
+        sync: false
+      - key: EMAIL_USER
+        sync: false
+      - key: EMAIL_PASS
+        sync: false
+      - key: EMAIL_FROM
+        sync: false
+      - key: MY_STORE
+        sync: false
+      - key: PRIMARY_COMPETITOR
+        sync: false
+      - key: TELEGRAM_BOT_TOKEN
+        sync: false
+      - key: TELEGRAM_CHAT_ID
+        sync: false
+      - key: WHATSAPP_PHONE
+        sync: false
+      - key: CALLMEBOT_APIKEY
+        sync: false
